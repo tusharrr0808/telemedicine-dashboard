@@ -77,3 +77,22 @@ footer {
     width: 100%;
     bottom: 0;
 }
+.language-selector {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.language-selector select {
+    padding: 0.4rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: relative; /* Add this */
+}
