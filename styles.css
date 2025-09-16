@@ -5,48 +5,47 @@ body {
     background-color: #f5f5f5;
 }
 
-/* Blue header with logo on the left */
+/* === HEADER === */
 header {
     background-color: #007bff;
     color: white;
-    padding: 1rem;
+    padding: 0.75rem 1rem;
     display: flex;
-    flex-direction: row;        /* ✅ horizontal layout */
-    align-items: center;        /* vertically center items */
-    justify-content: flex-start;/* ✅ left-align everything */
-    position: relative;
-    width: 100%;
+    justify-content: space-between; /* left / center / right sections */
+    align-items: center;
+    position: fixed;   /* stay at top */
     top: 0;
     left: 0;
-    overflow: hidden;
-    gap: 1rem;                  /* space between logo and text */
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
 }
 
-/* Logo on the far left */
+/* Left: Logo */
 .top-left-logo {
     height: 60px;
     width: auto;
-    object-fit: contain;
+    flex: 0 0 auto;
     transition: transform 0.3s ease-in-out;
 }
 
 .top-left-logo:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
-/* Medसेवा title next to logo */
+/* Center: Title */
 .site-title {
-    font-size: 3.5rem;
-    margin: 0;
+    font-size: 2.8rem;
     font-weight: bold;
+    margin: 0;
+    flex: 1 1 auto;
+    text-align: center;    /* ✅ center text within the middle area */
     color: white;
 }
 
-/* Language selector in top-right corner */
+/* Right: Language selector box */
 .language-selector {
-    position: absolute;
-    top: 10px;
-    right: 20px;
+    flex: 0 0 auto;
 }
 
 .language-selector select {
@@ -56,10 +55,10 @@ header {
     font-size: 0.9rem;
 }
 
-/* Search bar under language selector */
+/* Optional search box directly under language selector */
 .search-box {
     position: absolute;
-    top: 50px;
+    top: 70px;      /* appears just below header if you keep it */
     right: 20px;
     display: flex;
     align-items: center;
@@ -95,109 +94,6 @@ header {
     justify-content: center;
 }
 
-/* Navigation */
+/* === NAVIGATION === */
 nav {
     background-color: #333;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul li {
-    flex: 1;
-    text-align: center;
-}
-
-nav ul li a {
-    display: block;
-    padding: 1rem;
-    color: white;
-    text-decoration: none;
-}
-
-nav ul li a:hover {
-    background-color: #555;
-}
-
-/* Cards */
-.cards {
-    display: flex;
-    justify-content: space-around;
-    margin: 2rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.card {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    width: 30%;
-    min-width: 250px;
-    text-align: center;
-}
-
-/* Buttons */
-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    margin-top: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Footer */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-/* ✅ Responsive adjustments */
-@media (max-width: 600px) {
-    .language-selector {
-        position: static;
-        margin-top: 0.5rem;
-    }
-
-    .search-box {
-        position: static;
-        margin-top: 0.5rem;
-        justify-content: flex-start;
-        width: 100%;
-    }
-
-    .search-box input {
-        width: 100%;
-        max-width: 250px;
-    }
-
-    .site-title {
-        font-size: 2.2rem;
-    }
-
-    .cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 90%;
-    }
-}
-
