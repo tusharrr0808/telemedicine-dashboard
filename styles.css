@@ -5,31 +5,28 @@ body {
     background-color: #f5f5f5;
 }
 
-/* Blue header with full-width logo background */
+/* Blue header with logo on the left */
 header {
     background-color: #007bff;
     color: white;
     padding: 1rem;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;   /* left-align content */
-    justify-content: flex-start;
-    position: relative;        /* allow absolutely positioned logo */
-    width: 100%;               /* span the whole top */
+    flex-direction: row;        /* ✅ horizontal layout */
+    align-items: center;        /* vertically center items */
+    justify-content: flex-start;/* ✅ left-align everything */
+    position: relative;
+    width: 100%;
     top: 0;
     left: 0;
-    overflow: hidden;          /* keep logo inside header */
+    overflow: hidden;
+    gap: 1rem;                  /* space between logo and text */
 }
 
-/* Logo covers entire header area */
+/* Logo on the far left */
 .top-left-logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;       /* maintain aspect ratio */
-    z-index: 0;                /* behind text & controls */
+    height: 60px;
+    width: auto;
+    object-fit: contain;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -37,21 +34,15 @@ header {
     transform: scale(1.05);
 }
 
-/* Ensure header children appear above logo */
-header > *:not(.top-left-logo) {
-    position: relative;
-    z-index: 1;
-}
-
-/* Bigger Medसेवा text */
+/* Medसेवा title next to logo */
 .site-title {
     font-size: 3.5rem;
-    margin: 0.5rem 0;
+    margin: 0;
     font-weight: bold;
     color: white;
 }
 
-/* Language selector in top-right */
+/* Language selector in top-right corner */
 .language-selector {
     position: absolute;
     top: 10px;
@@ -68,16 +59,15 @@ header > *:not(.top-left-logo) {
 /* Search bar under language selector */
 .search-box {
     position: absolute;
-    top: 50px;      /* right below selector */
+    top: 50px;
     right: 20px;
     display: flex;
     align-items: center;
 }
 
-/* Search input */
 .search-box input {
     padding: 0.4rem;
-    border-radius: 5px 0 0 5px;  /* rounded left side */
+    border-radius: 5px 0 0 5px;
     border: 1px solid #ccc;
     width: 150px;
     font-size: 0.9rem;
@@ -86,13 +76,11 @@ header > *:not(.top-left-logo) {
     transition: width 0.3s ease;
 }
 
-/* Expand search bar on focus */
 .search-box input:focus {
     width: 220px;
     outline: none;
 }
 
-/* Search button */
 .search-box button {
     height: 32px;
     width: 32px;
@@ -182,7 +170,6 @@ footer {
 
 /* ✅ Responsive adjustments */
 @media (max-width: 600px) {
-    /* Stack language + search neatly */
     .language-selector {
         position: static;
         margin-top: 0.5rem;
@@ -201,4 +188,16 @@ footer {
     }
 
     .site-title {
-        font-size
+        font-size: 2.2rem;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+}
+
