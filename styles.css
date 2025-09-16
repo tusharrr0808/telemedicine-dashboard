@@ -42,20 +42,23 @@ header {
 /* Search bar under language selector */
 .search-box {
     position: absolute;
-    top: 50px;
+    top: 50px;      /* right below selector */
     right: 20px;
     display: flex;
     gap: 5px;
 }
 
 .search-box input {
-    padding: 0.4rem;
+    padding: 0.3rem 0.5rem;   /* compact padding */
     border-radius: 5px;
     border: 1px solid #ccc;
+    width: 150px;             /* desktop width */
+    font-size: 0.9rem;
+    transition: width 0.3s ease;
 }
 
 .search-box button {
-    padding: 0.4rem 0.6rem;
+    padding: 0.3rem 0.6rem;
     border: none;
     border-radius: 5px;
     background: white;
@@ -110,6 +113,8 @@ nav ul li a:hover {
     display: flex;
     justify-content: space-around;
     margin: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .card {
@@ -118,6 +123,7 @@ nav ul li a:hover {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     width: 30%;
+    min-width: 250px;
     text-align: center;
 }
 
@@ -147,7 +153,37 @@ footer {
     bottom: 0;
 }
 
+/* ✅ Responsive adjustments */
+@media (max-width: 600px) {
+    /* Stack language + search neatly */
+    .language-selector {
+        position: static;
+        margin-top: 0.5rem;
+    }
 
+    .search-box {
+        position: static;
+        margin-top: 0.5rem;
+        justify-content: flex-start;
+        width: 100%;
+    }
 
+    .search-box input {
+        width: 100%;       /* take full width */
+        max-width: 250px;  /* but not oversized */
+    }
 
+    .site-title {
+        font-size: 2.2rem; /* smaller on small screens */
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+}
 
