@@ -5,11 +5,13 @@ body {
     background-color: #f5f5f5;
 }
 
+/* Bigger blue header */
 header {
     background-color: #007bff;
     color: white;
-    padding: 1rem;
+    padding: 2.5rem 1rem;   /* increased height */
     text-align: center;
+    position: relative;
 }
 
 nav {
@@ -77,9 +79,11 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+/* Language selector stays in top-right */
 .language-selector {
     position: absolute;
-    top: 15px;
+    top: 20px;
     right: 20px;
 }
 
@@ -89,13 +93,7 @@ footer {
     border: 1px solid #ccc;
     font-size: 0.9rem;
 }
-header {
-    background-color: #007bff;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    position: relative; /* Add this */
-}
+
 .top-left-logo {
     position: absolute;
     top: 10px;
@@ -107,13 +105,14 @@ header {
 }
 
 .top-left-logo:hover {
-    transform: scale(1.2); /* magnify by 20% */
+    transform: scale(1.2);
 }
+
 .header-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;  /* space between Medसेवा and search */
+    gap: 20px;
 }
 
 .header-content h1 {
@@ -123,31 +122,16 @@ header {
     color: white;
 }
 
+/* Search box centered below language selector */
 .search-box {
+    margin-top: 1.5rem;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
 .search-box input {
-    padding: 0.4rem 0.6rem;
-    border-radius: 5px 0 0 5px;
-    border: none;
-    font-size: 1rem;
-    outline: none;
-}
-
-.search-box button {
-    padding: 0.4rem 0.6rem;
-    border: none;
-    background: #0056b3;
-    color: white;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-}
-
-.search-box button:hover {
-    background: #003d80;
-}
+    paddin
 
 
 
