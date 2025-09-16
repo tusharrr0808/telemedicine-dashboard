@@ -5,28 +5,31 @@ body {
     background-color: #f5f5f5;
 }
 
-/* Blue header with logo background */
+/* Blue header with full-width logo background */
 header {
     background-color: #007bff;
     color: white;
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    position: relative;
-    gap: 0.5rem;
-    overflow: hidden;            /* keep logo inside header */
+    align-items: flex-start;   /* left-align content */
+    justify-content: flex-start;
+    position: relative;        /* allow absolutely positioned logo */
+    width: 100%;               /* span the whole top */
+    top: 0;
+    left: 0;
+    overflow: hidden;          /* keep logo inside header */
 }
 
-/* Logo that covers the whole blue header */
+/* Logo covers entire header area */
 .top-left-logo {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;                 /* full header width */
-    height: 100%;                /* full header height */
-    object-fit: contain;         /* maintain aspect ratio */
-    z-index: 0;                  /* sit behind text & controls */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;       /* maintain aspect ratio */
+    z-index: 0;                /* behind text & controls */
     transition: transform 0.3s ease-in-out;
 }
 
@@ -198,16 +201,4 @@ footer {
     }
 
     .site-title {
-        font-size: 2.2rem;
-    }
-
-    .cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 90%;
-    }
-}
-
+        font-size
