@@ -132,6 +132,29 @@ footer {
 
 .search-box input {
     paddin
+/* Make header stack items vertically and taller */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2.5rem 1rem;   /* taller header */
+}
+
+/* Larger Medसेवा text */
+.site-title {
+    font-size: 3rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Center the search box */
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 
 
