@@ -11,9 +11,9 @@ header {
     color: white;
     padding: 0.75rem 1rem;
     display: flex;
-    justify-content: space-between; /* left / center / right sections */
+    justify-content: space-between; /* left/center/right */
     align-items: center;
-    position: fixed;   /* stay at top */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -39,11 +39,11 @@ header {
     font-weight: bold;
     margin: 0;
     flex: 1 1 auto;
-    text-align: center;    /* ✅ center text within the middle area */
+    text-align: center;
     color: white;
 }
 
-/* Right: Language selector box */
+/* Right: Language selector */
 .language-selector {
     flex: 0 0 auto;
 }
@@ -55,10 +55,10 @@ header {
     font-size: 0.9rem;
 }
 
-/* Optional search box directly under language selector */
+/* Optional search box under selector */
 .search-box {
     position: absolute;
-    top: 70px;      /* appears just below header if you keep it */
+    top: 70px;
     right: 20px;
     display: flex;
     align-items: center;
@@ -97,3 +97,111 @@ header {
 /* === NAVIGATION === */
 nav {
     background-color: #333;
+    margin-top: 96px; /* space below fixed header */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    flex: 1;
+    text-align: center;
+}
+
+nav ul li a {
+    display: block;
+    padding: 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+/* === MAIN CARDS === */
+.cards {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 30%;
+    min-width: 250px;
+    text-align: center;
+}
+
+/* === BUTTONS === */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* === FOOTER === */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .site-title {
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    .language-selector {
+        margin-top: 0.5rem;
+    }
+
+    .search-box {
+        position: static;
+        margin-top: 0.5rem;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .search-box input {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+}
