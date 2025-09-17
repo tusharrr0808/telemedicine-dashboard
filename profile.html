@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <img src="1000107238-removebg-preview (1).png" alt="Logo" class="top-left-logo">
+    <h1 class="site-title">Medसेवा</h1>
+    <div class="language-selector">
+      <select id="language" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Search..." />
+      <button>🔍</button>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index (3).html">Home</a></li>
+      <li><a href="#">Consult Doctor</a></li>
+      <li><a href="#">My Prescriptions</a></li>
+      <li><a href="#">Order Medicines</a></li>
+      <li><a href="profile.html" class="active">Profile</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="profile-form">
+      <h2>Create Your Profile</h2>
+      <form id="profileForm">
+        <!-- Compulsory fields -->
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required placeholder="10-digit number">
+
+        <!-- Optional fields -->
+        <label for="aadhaar">Aadhaar Number</label>
+        <input type="text" id="aadhaar" name="aadhaar" pattern="[0-9]{12}" placeholder="12-digit Aadhaar">
+
+        <label for="blood">Blood Group</label>
+        <input type="text" id="blood" name="blood" placeholder="e.g. O+, A-, B+">
+
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" min="0" max="120">
+
+        <label for="weight">Weight (kg)</label>
+        <input type="number" id="weight" name="weight" min="1" max="300">
+
+        <label for="email">Email ID</label>
+        <input type="email" id="email" name="email">
+
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="3"></textarea>
+
+        <button type="submit">Save Profile</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Telemedicine App</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
