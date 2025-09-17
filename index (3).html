@@ -8,13 +8,13 @@
 </head>
 <body>
    <header>
-        
+        <!-- Left: Logo -->
         <img src="logo.png" alt="Medसेवा logo" class="top-left-logo">
 
-    
+        <!-- Center: Title -->
         <h1 class="site-title">Medसेवा</h1>
 
-    
+        <!-- Right: Language selector -->
         <div class="language-selector">
             <select id="language" onchange="changeLanguage(this.value)">
                 <option value="en">English</option>
@@ -24,30 +24,22 @@
             </select>
         </div>
 
-    
+        <!-- Optional search box under the selector -->
         <div class="search-box">
             <input type="text" placeholder="Search..." />
             <button>🔍</button>
         </div>
     </header>
 
-    <nav role="navigation" aria-label="Primary Navigation">
+    <nav>
         <ul>
-   
-<li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-    <li><a href="#"><i class="fas fa-user-md"></i> Consult Doctor</a></li>
-<li><a href="#"><i class="fas fa-file-prescription"></i> My Prescriptions</a></li>
-    <li><a href="#"><i class="fas fa-pills"></i> Order Medicines</a></li>
-<li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
- </ul>
-
-</nav>
-<div class="card">
-
-  <h2><i class="fas fa-user-md"></i> Consult a Doctor</h2>
-  <p>Get instant consultation from certified doctors.</p>
-  <button type="button" title="Start consultation" onclick="alert('Consultation feature coming soon!')">Start</button>
-</div>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Consult Doctor</a></li>
+            <li><a href="#">My Prescriptions</a></li>
+            <li><a href="#">Order Medicines</a></li>
+            <li><a href="#">Profile</a></li>
+        </ul>
+    </nav>
 
     <main>
         <section class="cards">
