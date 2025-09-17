@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telemedicine Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- ✅ Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+   <header>
+    <img src="1000107238-removebg-preview (1).png" alt="Logo" class="top-left-logo">
+
+    <!-- Larger title -->
+    <h1 class="site-title">Medसेवा</h1>
+
+    <!-- Language selector stays first -->
+    <div class="language-selector">
+        <select id="language" onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+        </select>
+    </div>
+
+    <!-- Search box directly below selector -->
+    <div class="search-box">
+        <input type="text" placeholder="Search..." />
+        <button>🔍</button>
+    </div>
+</header>
+
+    <nav>
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-user-md"></i> Consult Doctor</a></li>
+            <li><a href="#"><i class="fas fa-prescription-bottle-alt"></i> My Prescriptions</a></li>
+            <li><a href="#"><i class="fas fa-pills"></i> Order Medicines</a></li>
+            <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="features-row">
+            <div class="feature-card">
+                <i class="fas fa-user-md"></i>
+                <h2>Consult a Doctor</h2>
+                <p>Get instant consultation from certified doctors.</p>
+                <button onclick="alert('Consultation feature coming soon!')">Start</button>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-prescription-bottle-alt"></i>
+                <h2>My Prescriptions</h2>
+                <p>View and manage your prescriptions.</p>
+                <button onclick="alert('Prescription feature coming soon!')">View</button>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-pills"></i>
+                <h2>Order Medicines</h2>
+                <p>Order medicines online and get home delivery.</p>
+                <button onclick="alert('Ordering feature coming soon!')">Order Now</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Telemedicine App</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
