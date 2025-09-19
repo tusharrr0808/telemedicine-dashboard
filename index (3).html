@@ -8,28 +8,23 @@
 </head>
 <body>
    <header>
-        <!-- Left: Logo -->
-        <img src="logo.png" alt="Medसेवा logo" class="top-left-logo">
+    <img src="1000107238-removebg-preview (1).png" alt="Logo" class="top-left-logo">
+    <h1 class="site-title">Medसेवा</h1>
 
-        <!-- Center: Title -->
-        <h1 class="site-title">Medसेवा</h1>
+    <div class="language-selector">
+        <select id="language" onchange="changeLanguage(this.value)">
+            <option value="english">English</option>
+            <option value="हिन्दी">हिन्दी</option>
+            <option value="ਪੰਜਾਬੀ">ਪੰਜਾਬੀ</option>
+            <option value="others">others</option>
+        </select>
+    </div>
 
-        <!-- Right: Language selector -->
-        <div class="language-selector">
-            <select id="language" onchange="changeLanguage(this.value)">
-                <option value="en">English</option>
-                <option value="hi">हिन्दी</option>
-                <option value="es">Español</option>
-                <option value="fr">Français</option>
-            </select>
-        </div>
-
-        <!-- Optional search box under the selector -->
-        <div class="search-box">
-            <input type="text" placeholder="Search..." />
-            <button>🔍</button>
-        </div>
-    </header>
+    <div class="search-box">
+        <input type="text" placeholder="Search..." />
+        <button>🔍</button>
+    </div>
+</header>
 
     <nav>
         <ul>
@@ -37,8 +32,8 @@
             <li><a href="#">Consult Doctor</a></li>
             <li><a href="#">My Prescriptions</a></li>
             <li><a href="#">Order Medicines</a></li>
-           <li><a href="profile.html">Profile</a></li>
-
+            <!-- ✅ Profile opens profile.html in a new tab -->
+            <li><a href="profile.html" target="_blank">Profile</a></li>
         </ul>
     </nav>
 
@@ -65,7 +60,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Telemedicine App</p>
+        <p>&copy; 2025 Medसेवा App</p>
     </footer>
 
     <script src="script.js"></script>
