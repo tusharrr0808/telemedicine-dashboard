@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consult a Doctor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+   <header>
+    <img src="1000107238-removebg-preview (1).png" alt="Logo" class="top-left-logo">
+    <h1 class="site-title">Medसेवा</h1>
+
+    <div class="language-selector">
+        <select id="language" onchange="changeLanguage(this.value)">
+            <option value="english">English</option>
+            <option value="हिन्दी">हिन्दी</option>
+            <option value="ਪੰਜਾਬੀ">ਪੰਜਾਬੀ</option>
+            <option value="others">others</option>
+        </select>
+    </div>
+
+    <div class="search-box">
+        <input type="text" placeholder="Search..." />
+        <button>🔍</button>
+    </div>
+</header>
+
+    <nav>
+        <ul>
+            <li><a href="index (3).html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="consult.html" class="active"><i class="fas fa-user-md"></i> Consult Doctor</a></li>
+            <li><a href="#"><i class="fas fa-prescription-bottle-alt"></i> My Prescriptions</a></li>
+            <li><a href="#"><i class="fas fa-pills"></i> Order Medicines</a></li>
+            <li><a href="profile.html" target="_blank"><i class="fas fa-user"></i> Profile</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="profile-form">
+            <h2>Book a Consultation</h2>
+            <form id="consultationForm">
+                <label for="patientName">Your Name *</label>
+                <input type="text" id="patientName" name="patientName" required>
+
+                <label for="issue">Describe Your Issue *</label>
+                <textarea id="issue" name="issue" rows="5" required></textarea>
+
+                <label for="preferredDate">Preferred Date</label>
+                <input type="date" id="preferredDate" name="preferredDate">
+
+                <label for="preferredTime">Preferred Time</label>
+                <input type="time" id="preferredTime" name="preferredTime">
+
+                <button type="submit">Submit Request</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Medसेवा App</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
