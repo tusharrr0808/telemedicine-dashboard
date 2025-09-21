@@ -82,7 +82,7 @@ header {
     position: absolute;
     top: 10px;
     left: 20px;
-    height: 100px;   /* ✅ Increased size */
+    height: 100px;
     width: auto;
     z-index: 10;
     transition: transform 0.3s ease-in-out;
@@ -114,24 +114,57 @@ nav ul li a {
     padding: 1rem;
     color: white;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+nav ul li a i {
+    font-size: 1.2rem;
 }
 
 nav ul li a:hover {
     background-color: #555;
 }
 
+/* New CSS for the emergency scroll */
+.emergency-scroll {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 0.5rem 0;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.emergency-text {
+    animation: scroll-left 15s linear infinite;
+    display: inline-block;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
 /* Cards Section */
 .cards {
     display: flex;
-    justify-content: space-between;  /* evenly spread */
+    justify-content: space-between;
     align-items: stretch;
     margin: 2rem;
     gap: 1rem;
-    flex-wrap: nowrap;  /* keep in one row */
+    flex-wrap: nowrap;
 }
 
 .card {
-    flex: 1;  /* equal width for all cards */
+    flex: 1;
     background-color: white;
     padding: 1.5rem;
     border-radius: 8px;
@@ -155,6 +188,49 @@ button:hover {
     background-color: #0056b3;
 }
 
+/* Profile Form Section */
+.profile-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.profile-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.profile-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-form label {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.profile-form input,
+.profile-form textarea {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.profile-form button {
+    margin-top: 1.5rem;
+    align-self: flex-end;
+}
+
+.save-profile-btn {
+  color: white;
+}
+
 /* Footer */
 footer {
     background-color: #333;
@@ -169,7 +245,7 @@ footer {
 /* Responsive for Mobile */
 @media (max-width: 800px) {
     .cards {
-        flex-direction: column;   /* stack vertically on small screens */
+        flex-direction: column;
     }
 
     .card {
@@ -197,4 +273,31 @@ footer {
         width: 100%;
         max-width: 250px;
     }
+}
+
+.support-chat-btn {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.support-chat-btn:hover {
+    background-color: #4cae4c;
+}
+#voice-search-btn {
+    margin-left: -1px; /* Overlap the border */
+    border-radius: 0 5px 5px 0;
+    background-color: #5cb85c;
+}
+#voice-search-btn:hover {
+    background-color: #4cae4c;
+}
+
+.listening-pulse {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
