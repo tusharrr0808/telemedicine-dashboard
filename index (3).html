@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telemedicine Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
    <header>
@@ -21,28 +22,35 @@
     </div>
 
     <div class="search-box">
-        <input type="text" placeholder="Search..." />
-        <button>🔍</button>
+        <input type="text" id="search-input" placeholder="Search..." />
+        <button type="submit" id="search-btn">🔍</button>
+        <button type="button" id="voice-search-btn"><i class="fas fa-microphone"></i></button>
     </div>
 </header>
 
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Consult Doctor</a></li>
-            <li><a href="#">My Prescriptions</a></li>
-            <li><a href="#">Order Medicines</a></li>
-            <!-- ✅ Profile opens profile.html in a new tab -->
-            <li><a href="profile.html" target="_blank">Profile</a></li>
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="consult.html"><i class="fas fa-user-md"></i> Consult Doctor</a></li>
+            <li><a href="#"><i class="fas fa-prescription-bottle-alt"></i> My Prescriptions</a></li>
+            <li><a href="#"><i class="fas fa-pills"></i> Order Medicines</a></li>
+            <li><a href="profile.html" target="_blank"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="#" class="support-chat-btn"><i class="fas fa-comments"></i> Support Chat</a></li>
         </ul>
     </nav>
+
+    <marquee class="emergency-scroll" behavior="scroll" direction="left">
+        <span class="emergency-text">
+            🚨 **Emergency Number: 108** | 🚑 **Ambulance Number: 102** 🚨
+        </span>
+    </marquee>
 
     <main>
         <section class="cards">
             <div class="card">
                 <h2>Consult a Doctor</h2>
                 <p>Get instant consultation from certified doctors.</p>
-                <button onclick="alert('Consultation feature coming soon!')">Start</button>
+                <button onclick="window.location.href='consult.html'">Start</button>
             </div>
 
             <div class="card">
@@ -58,7 +66,7 @@
             </div>
         </section>
     </main>
-
+    
     <footer>
         <p>&copy; 2025 Medसेवा App</p>
     </footer>
