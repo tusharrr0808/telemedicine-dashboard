@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Profile</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
   <header>
@@ -26,11 +27,11 @@
 
   <nav>
     <ul>
-      <li><a href="index (3).html">Home</a></li>
-      <li><a href="#">Consult Doctor</a></li>
-      <li><a href="#">My Prescriptions</a></li>
-      <li><a href="#">Order Medicines</a></li>
-      <li><a href="profile.html" class="active">Profile</a></li>
+      <li><a href="index (3).html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#"><i class="fas fa-user-md"></i> Consult Doctor</a></li>
+      <li><a href="#"><i class="fas fa-prescription-bottle-alt"></i> My Prescriptions</a></li>
+      <li><a href="#"><i class="fas fa-pills"></i> Order Medicines</a></li>
+      <li><a href="profile.html" class="active"><i class="fas fa-user"></i> Profile</a></li>
     </ul>
   </nav>
 
@@ -38,14 +39,12 @@
     <section class="profile-form">
       <h2>Create Your Profile</h2>
       <form id="profileForm">
-        <!-- Compulsory fields -->
         <label for="name">Name *</label>
         <input type="text" id="name" name="name" required>
 
         <label for="phone">Phone Number *</label>
         <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required placeholder="10-digit number">
 
-        <!-- Optional fields -->
         <label for="aadhaar">Aadhaar Number</label>
         <input type="text" id="aadhaar" name="aadhaar" pattern="[0-9]{12}" placeholder="12-digit Aadhaar">
 
@@ -76,4 +75,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
