@@ -3,65 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consult a Doctor</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Medसेवा: Consult Doctor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-   <header>
-    <img src="1000107238-removebg-preview (1).png" alt="Logo" class="top-left-logo">
-    <h1 class="site-title">Medसेवा</h1>
+<body class="bg-gray-100 min-h-screen flex flex-col">
 
-    <div class="language-selector">
-        <select id="language" onchange="changeLanguage(this.value)">
-            <option value="english">English</option>
-            <option value="हिन्दी">हिन्दी</option>
-            <option value="ਪੰਜਾਬੀ">ਪੰਜਾਬੀ</option>
-            <option value="others">others</option>
-        </select>
+    <div class="bg-red-600 text-white text-center py-2 px-4 shadow-md overflow-hidden">
+        <marquee behavior="scroll" direction="left" class="font-bold text-sm md:text-base">
+            🚨 Emergency Number: 108 | 🚑 Ambulance Number: 102 🚨
+        </marquee>
     </div>
 
-    <div class="search-box">
-        <input type="text" placeholder="Search..." />
-        <button>🔍</button>
+    <div class="flex flex-col md:flex-row flex-1 max-w-7xl mx-auto w-full bg-white shadow-xl rounded-2xl md:my-8 overflow-hidden">
+
+        <aside class="w-full md:w-64 bg-white border-b-2 md:border-r-2 border-gray-200 md:h-auto flex-shrink-0">
+            <div class="p-6 md:p-8 flex items-center justify-center md:justify-start">
+                <img src="1000107238-removebg-preview (1).png" alt="Medseva Logo" class="h-16 w-16 rounded-full mr-3 shadow-sm">
+                <h1 class="text-2xl font-bold text-gray-800 hidden md:block">Medसेवा</h1>
+            </div>
+            <nav class="p-4 md:p-6">
+                <ul class="flex md:flex-col justify-around md:justify-start space-x-2 md:space-x-0 md:space-y-3 font-medium">
+                    <li><a href="index.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">
+                        <i class="fas fa-home text-lg mb-1 md:mb-0 md:mr-3"></i>
+                        <span class="text-xs md:text-base">Home</span>
+                    </a></li>
+                    <li><a href="profile.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">
+                        <i class="fas fa-user text-lg mb-1 md:mb-0 md:mr-3"></i>
+                        <span class="text-xs md:text-base">Profile</span>
+                    </a></li>
+                    <li><a href="support.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">
+                        <i class="fas fa-comments text-lg mb-1 md:mb-0 md:mr-3"></i>
+                        <span class="text-xs md:text-base">Support Chat</span>
+                    </a></li>
+                    <li><a href="consult.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 active">
+                        <i class="fas fa-user-md text-lg mb-1 md:mb-0 md:mr-3"></i>
+                        <span class="text-xs md:text-base">Consult Doctor</span>
+                    </a></li>
+                    <li><a href="prescriptions.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">
+                        <i class="fas fa-prescription-bottle-alt text-lg mb-1 md:mb-0 md:mr-3"></i>
+                        <span class="text-xs md:text-base">My Prescriptions</span>
+                    </a></li>
+                    <li><a href="medicines.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">
+                        <i class="fas fa-pills text-lg mb-1 md:mb-0 md:mr-3"></i>
+                        <span class="text-xs md:text-base">Order Medicines</span>
+                    </a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main id="consultation-view" class="flex-1 p-6 md:p-10 flex flex-col page-transition">
+            <header class="flex items-center justify-between pb-6 border-b border-gray-200 mb-6">
+                <a href="index.html" class="text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                    <i class="fas fa-arrow-left text-lg"></i>
+                    <span class="ml-2 font-medium">Back to Dashboard</span>
+                </a>
+            </header>
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6">Book a Consultation</h3>
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+                <form id="consultationForm" class="space-y-4">
+                    <div>
+                        <label for="consult-name" class="block text-sm font-medium text-gray-700">Your Name <span class="text-red-500">*</span></label>
+                        <input type="text" id="consult-name" name="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2">
+                    </div>
+                    <div>
+                        <label for="consult-issue" class="block text-sm font-medium text-gray-700">Describe Your Issue <span class="text-red-500">*</span></label>
+                        <textarea id="consult-issue" name="issue" rows="5" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2"></textarea>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="consult-date" class="block text-sm font-medium text-gray-700">Preferred Date</label>
+                            <input type="date" id="consult-date" name="date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2">
+                        </div>
+                        <div>
+                            <label for="consult-time" class="block text-sm font-medium text-gray-700">Preferred Time</label>
+                            <input type="time" id="consult-time" name="time" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2">
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                            Submit Request
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
     </div>
-</header>
 
-    <nav>
-        <ul>
-            <li><a href="index (3).html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="consult.html" class="active"><i class="fas fa-user-md"></i> Consult Doctor</a></li>
-            <li><a href="#"><i class="fas fa-prescription-bottle-alt"></i> My Prescriptions</a></li>
-            <li><a href="#"><i class="fas fa-pills"></i> Order Medicines</a></li>
-            <li><a href="profile.html" target="_blank"><i class="fas fa-user"></i> Profile</a></li>
-        </ul>
-    </nav>
+    <div id="custom-modal" class="fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white rounded-xl shadow-lg p-6 m-4 max-w-sm w-full transform transition-all scale-95 opacity-0 duration-300">
+            <div class="flex justify-between items-center pb-3">
+                <h4 id="modal-title" class="text-lg font-semibold text-gray-800"></h4>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <p id="modal-message" class="text-sm text-gray-600 pb-4"></p>
+            <div class="flex justify-end">
+                <button onclick="closeModal()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200">OK</button>
+            </div>
+        </div>
+    </div>
 
-    <main>
-        <section class="profile-form">
-            <h2>Book a Consultation</h2>
-            <form id="consultationForm">
-                <label for="patientName">Your Name *</label>
-                <input type="text" id="patientName" name="patientName" required>
-
-                <label for="issue">Describe Your Issue *</label>
-                <textarea id="issue" name="issue" rows="5" required></textarea>
-
-                <label for="preferredDate">Preferred Date</label>
-                <input type="date" id="preferredDate" name="preferredDate">
-
-                <label for="preferredTime">Preferred Time</label>
-                <input type="time" id="preferredTime" name="preferredTime">
-
-                <button type="submit">Submit Request</button>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Medसेवा App</p>
-    </footer>
-
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
