@@ -30,7 +30,7 @@
                         <i class="fas fa-home text-lg mb-1 md:mb-0 md:mr-3"></i>
                         <span class="text-xs md:text-base">Home</span>
                     </a></li>
-                    <li><a href="profile.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 active">
+                    <li><a href="profile.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200 active">
                         <i class="fas fa-user text-lg mb-1 md:mb-0 md:mr-3"></i>
                         <span class="text-xs md:text-base">Profile</span>
                     </a></li>
@@ -50,47 +50,79 @@
                         <i class="fas fa-pills text-lg mb-1 md:mb-0 md:mr-3"></i>
                         <span class="text-xs md:text-base">Order Medicines</span>
                     </a></li>
+                    <li><a href="videos.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">
+                        <i class="fas fa-video text-lg mb-1 md:mb-0 md:mr-3"></i>
+                        <span class="text-xs md:text-base">Animated Video</span>
+                    </a></li>
                 </ul>
             </nav>
         </aside>
 
-        <main id="profile-view" class="flex-1 p-6 md:p-10 flex flex-col page-transition">
-            <header class="flex items-center justify-between pb-6 border-b border-gray-200 mb-6">
-                <a href="index.html" class="text-gray-500 hover:text-gray-700 transition-colors duration-200">
-                    <i class="fas fa-arrow-left text-lg"></i>
-                    <span class="ml-2 font-medium">Back to Dashboard</span>
-                </a>
+        <main id="main-content" class="flex-1 p-6 md:p-10 flex flex-col">
+            <header class="pb-6 border-b border-gray-200 mb-6">
+                <h2 class="text-3xl font-bold text-gray-800">My Profile</h2>
+                <p class="text-sm text-gray-500 mt-1">Manage your personal and medical information.</p>
             </header>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-6">Your Profile</h3>
-            <div class="bg-white p-6 rounded-2xl shadow-md">
-                <p id="user-id-display" class="text-sm text-gray-500 mb-4 break-all">User ID: <span class="font-mono text-gray-700">Loading...</span></p>
-                <form id="profileForm" class="space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="profile-name" class="block text-sm font-medium text-gray-700">Name <span class="text-red-500">*</span></label>
-                            <input type="text" id="profile-name" name="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2">
-                        </div>
-                        <div>
-                            <label for="profile-phone" class="block text-sm font-medium text-gray-700">Phone Number <span class="text-red-500">*</span></label>
-                            <input type="tel" id="profile-phone" name="phone" pattern="[0-9]{10}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2" placeholder="10-digit number">
+
+            <div class="flex-1 overflow-y-auto">
+                <form id="profile-form" class="space-y-6">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-inner">
+                        <h3 class="text-xl font-semibold text-gray-700 mb-4 border-b pb-2">Personal Information</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="full-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                <input type="text" id="full-name" name="full-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                <input type="email" id="email" name="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500" disabled>
+                            </div>
+
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+
+                            <div>
+                                <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+                                <input type="date" id="dob" name="dob" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+
+                            <div>
+                                <label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
+                                <select id="gender" name="gender" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="profile-aadhaar" class="block text-sm font-medium text-gray-700">Aadhaar Number</label>
-                            <input type="text" id="profile-aadhaar" name="aadhaar" pattern="[0-9]{12}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2" placeholder="12-digit Aadhaar">
+
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-inner">
+                        <h3 class="text-xl font-semibold text-gray-700 mb-4 border-b pb-2">Medical Information</h3>
+                        
+                        <div class="mb-4">
+                            <label for="blood-group" class="block text-sm font-medium text-gray-700">Blood Group</label>
+                            <input type="text" id="blood-group" name="blood-group" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                         </div>
+
+                        <div class="mb-4">
+                            <label for="allergies" class="block text-sm font-medium text-gray-700">Known Allergies (e.g., Penicillin, Peanuts)</label>
+                            <textarea id="allergies" name="allergies" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+
                         <div>
-                            <label for="profile-blood" class="block text-sm font-medium text-gray-700">Blood Group</label>
-                            <input type="text" id="profile-blood" name="blood" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2" placeholder="e.g. O+, A-">
+                            <label for="conditions" class="block text-sm font-medium text-gray-700">Chronic Conditions (e.g., Hypertension, Diabetes)</label>
+                            <textarea id="conditions" name="conditions" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
                         </div>
                     </div>
-                    <div>
-                        <label for="profile-address" class="block text-sm font-medium text-gray-700">Address</label>
-                        <textarea id="profile-address" name="address" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2"></textarea>
-                    </div>
-                    <div class="flex justify-end">
-                        <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+
+                    <div class="pt-4 flex justify-end">
+                        <button type="submit" class="w-auto inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
                             Save Profile
                         </button>
                     </div>
@@ -98,6 +130,11 @@
             </div>
         </main>
     </div>
+
+    <a href="support.html?action=symptom" class="fixed bottom-8 right-8 z-40 bg-green-600 text-white py-3 px-5 rounded-full shadow-2xl hover:bg-green-700 transition-all duration-300 transform hover:scale-105 inline-flex items-center space-x-2" title="Enter your symptom">
+        <i class="fas fa-brain text-xl"></i>
+        <span class="font-medium text-base">Enter your symptom</span>
+    </a>
 
     <div id="custom-modal" class="fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-50 hidden flex items-center justify-center">
         <div class="bg-white rounded-xl shadow-lg p-6 m-4 max-w-sm w-full transform transition-all scale-95 opacity-0 duration-300">
@@ -115,5 +152,16 @@
     </div>
 
     <script type="module" src="script.js"></script>
+    <script>
+        // Expose closeModal globally for button in modal
+        function closeModal() {
+            const modal = document.getElementById('custom-modal');
+            modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
+            modal.querySelector('div').classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // Wait for the transition to finish
+        }
+    </script>
 </body>
 </html>
