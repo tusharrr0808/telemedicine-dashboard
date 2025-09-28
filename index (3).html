@@ -26,7 +26,7 @@
             </div>
             <nav class="p-4 md:p-6">
                 <ul class="flex md:flex-col justify-around md:justify-start space-x-2 md:space-x-0 md:space-y-3 font-medium">
-                    <li><a href="index.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 active">
+                    <li><a href="index.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200 active">
                         <i class="fas fa-home text-lg mb-1 md:mb-0 md:mr-3"></i>
                         <span class="text-xs md:text-base">Home</span>
                     </a></li>
@@ -49,6 +49,10 @@
                     <li><a href="medicines.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">
                         <i class="fas fa-pills text-lg mb-1 md:mb-0 md:mr-3"></i>
                         <span class="text-xs md:text-base">Order Medicines</span>
+                    </a></li>
+                    <li><a href="videos.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">
+                        <i class="fas fa-video text-lg mb-1 md:mb-0 md:mr-3"></i>
+                        <span class="text-xs md:text-base">Animated Video</span>
                     </a></li>
                 </ul>
             </nav>
@@ -104,6 +108,11 @@
         </main>
     </div>
 
+    <a href="support.html?action=symptom" class="fixed bottom-8 right-8 z-40 bg-green-600 text-white py-3 px-5 rounded-full shadow-2xl hover:bg-green-700 transition-all duration-300 transform hover:scale-105 inline-flex items-center space-x-2" title="Enter your symptom">
+        <i class="fas fa-brain text-xl"></i>
+        <span class="font-medium text-base">Enter your symptom</span>
+    </a>
+
     <div id="custom-modal" class="fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-50 hidden flex items-center justify-center">
         <div class="bg-white rounded-xl shadow-lg p-6 m-4 max-w-sm w-full transform transition-all scale-95 opacity-0 duration-300">
             <div class="flex justify-between items-center pb-3">
@@ -120,5 +129,16 @@
     </div>
 
     <script type="module" src="script.js"></script>
+    <script>
+        // Expose closeModal globally for button in modal
+        function closeModal() {
+            const modal = document.getElementById('custom-modal');
+            modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
+            modal.querySelector('div').classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // Wait for the transition to finish
+        }
+    </script>
 </body>
 </html>
