@@ -23,12 +23,15 @@ const navItems = document.querySelectorAll('.nav-item');
 function setActiveNav() {
     const currentPath = window.location.pathname.split('/').pop();
     navItems.forEach(item => {
-        item.classList.remove('bg-blue-600', 'text-white', 'hover:bg-blue-50', 'hover:text-blue-600');
+        // Remove old active classes
+        item.classList.remove('active');
+        item.classList.add('text-gray-600', 'hover:bg-blue-50', 'hover:text-blue-600'); // Ensure default styles are present
+        
         const href = item.getAttribute('href').split('/').pop();
         if (href === currentPath || (currentPath === '' && href === 'index.html')) {
-            item.classList.add('bg-blue-600', 'text-white');
-        } else {
-            item.classList.add('text-gray-600', 'hover:bg-blue-50', 'hover:text-blue-600');
+            // Apply new active classes (using CSS class 'active' defined in style.css)
+            item.classList.add('active');
+            item.classList.remove('text-gray-600', 'hover:bg-blue-50', 'hover:text-blue-600');
         }
     });
 }
@@ -47,6 +50,9 @@ function showMessage(title, message) {
     }, 10);
 }
 
+// NOTE: closeModal is now defined in a script block outside the module for global access, 
+// but is kept here for completeness and module-internal use (if any)
+/*
 function closeModal() {
     const modal = document.getElementById('custom-modal');
     modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
@@ -55,6 +61,7 @@ function closeModal() {
         modal.classList.add('hidden');
     }, 300); // Wait for the transition to finish
 }
+*/
 
 // Initial view load and active nav setup
 document.addEventListener('DOMContentLoaded', () => {
@@ -140,8 +147,9 @@ async function fetchPrescriptions() {
     
     container.innerHTML = `<p class="text-gray-500">Loading prescriptions...</p>`;
     const prescriptionsRef = collection(db, `/artifacts/${appId}/users/${userId}/private/prescriptions`);
-    const q = query(prescriptionsRef);
+    const q = query(prescriptionsRef, orderBy('date', 'desc')); // Order by date descending
 
+    // Use onSnapshot for real-time updates
     onSnapshot(q, (querySnapshot) => {
         if (querySnapshot.empty) {
             container.innerHTML = `<p class="text-gray-500">No prescriptions found. Book a consultation to get started!</p>`;
@@ -150,11 +158,16 @@ async function fetchPrescriptions() {
         container.innerHTML = '';
         querySnapshot.forEach((doc) => {
             const prescription = doc.data();
+            // Convert Firestore Timestamp or string date to local string, defaulting to N/A
+            const dateStr = prescription.date 
+                ? (prescription.date.toDate ? prescription.date.toDate().toLocaleDateString() : new Date(prescription.date).toLocaleDateString())
+                : 'N/A';
+
             const card = `
                 <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 mb-4">
                     <div class="flex items-center justify-between mb-2">
                         <h4 class="font-semibold text-lg text-gray-800">Prescription from Dr. ${prescription.doctor || 'Unknown'}</h4>
-                        <span class="text-sm text-gray-500">${prescription.date ? new Date(prescription.date).toLocaleDateString() : 'N/A'}</span>
+                        <span class="text-sm text-gray-500">${dateStr}</span>
                     </div>
                     <p class="text-gray-700 font-medium">${prescription.medication || 'No medication details'}</p>
                     <p class="text-gray-500 text-sm mt-1">Notes: ${prescription.notes || 'No notes'}</p>
@@ -162,6 +175,9 @@ async function fetchPrescriptions() {
             `;
             container.innerHTML += card;
         });
+    }, (error) => {
+        console.error("Error fetching prescriptions:", error);
+        container.innerHTML = `<p class="text-red-500">Error loading prescriptions. Please try again.</p>`;
     });
 }
 
@@ -179,7 +195,10 @@ if (profileForm) {
             const profileData = Object.fromEntries(formData.entries());
             const docRef = doc(db, `/artifacts/${appId}/users/${userId}/private/profile`);
             await setDoc(docRef, profileData, { merge: true });
-            document.getElementById('user-name').textContent = profileData.name;
+            
+            const userNameSpan = document.getElementById('user-name');
+            if (userNameSpan) userNameSpan.textContent = profileData.name || 'Guest';
+            
             showMessage('Success', 'Profile saved successfully!');
         } catch (e) {
             console.error("Error saving profile:", e);
@@ -206,7 +225,7 @@ if (consultationForm) {
 
             const colRef = collection(db, `/artifacts/${appId}/users/${userId}/private/consultations`);
             await addDoc(colRef, consultationData);
-            showMessage('Success', 'Your consultation request has been submitted!');
+            showMessage('Success', 'Your consultation request has been submitted! A doctor will be in touch soon.');
             e.target.reset(); // Clear the form
         } catch (e) {
             console.error("Error submitting consultation:", e);
@@ -230,7 +249,7 @@ const setupVoiceSearch = () => {
 
     const recognition = new SpeechRecognition();
     recognition.continuous = false;
-    recognition.lang = 'en-US';
+    recognition.lang = 'en-IN'; // Changed to Indian English for potentially better recognition
     recognition.interimResults = false;
 
     recognition.onstart = () => {
@@ -242,6 +261,8 @@ const setupVoiceSearch = () => {
         const transcript = event.results[0][0].transcript;
         searchInput.value = transcript;
         searchInput.placeholder = "Search...";
+        // Optional: Trigger a search on result
+        // if (transcript) { document.getElementById('search-form').submit(); } 
     };
 
     recognition.onend = () => {
@@ -281,25 +302,32 @@ const addMessageToChat = (message, isSender) => {
     `;
     if (chatMessages) {
         chatMessages.appendChild(messageEl);
+        // Scroll to the bottom on new message
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 };
 
 const setupChatListener = async () => {
     if (!userId) return;
+    if (!chatMessages) return;
 
+    // Use a fixed public collection for support chat visible to all users
     const chatRef = collection(db, `/artifacts/${appId}/public/data/supportChat`);
-    const q = query(chatRef, orderBy('createdAt'));
+    const q = query(chatRef, orderBy('createdAt', 'asc')); // Order by timestamp ascending
+
+    // Set a placeholder while listening
+    chatMessages.innerHTML = `<p class="text-center text-gray-500 py-4">Connecting to Support...</p>`;
 
     onSnapshot(q, (querySnapshot) => {
-        if (chatMessages) {
-            chatMessages.innerHTML = '';
-            querySnapshot.forEach((doc) => {
-                const message = doc.data();
-                const isSender = message.userId === userId;
-                addMessageToChat(message.text, isSender);
-            });
-        }
+        chatMessages.innerHTML = ''; // Clear existing messages
+        querySnapshot.forEach((doc) => {
+            const message = doc.data();
+            const isSender = message.userId === userId;
+            addMessageToChat(message.text, isSender);
+        });
+    }, (error) => {
+        console.error("Error fetching chat messages:", error);
+        chatMessages.innerHTML = `<p class="text-center text-red-500 py-4">Failed to load chat. Please refresh.</p>`;
     });
 };
 
