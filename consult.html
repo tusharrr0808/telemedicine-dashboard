@@ -38,7 +38,7 @@
                         <i class="fas fa-comments text-lg mb-1 md:mb-0 md:mr-3"></i>
                         <span class="text-xs md:text-base">Support Chat</span>
                     </a></li>
-                    <li><a href="consult.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 active">
+                    <li><a href="consult.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200 active">
                         <i class="fas fa-user-md text-lg mb-1 md:mb-0 md:mr-3"></i>
                         <span class="text-xs md:text-base">Consult Doctor</span>
                     </a></li>
@@ -50,40 +50,59 @@
                         <i class="fas fa-pills text-lg mb-1 md:mb-0 md:mr-3"></i>
                         <span class="text-xs md:text-base">Order Medicines</span>
                     </a></li>
+                    <li><a href="videos.html" class="nav-item group flex flex-col md:flex-row items-center md:items-start p-2 rounded-xl text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">
+                        <i class="fas fa-video text-lg mb-1 md:mb-0 md:mr-3"></i>
+                        <span class="text-xs md:text-base">Animated Video</span>
+                    </a></li>
                 </ul>
             </nav>
         </aside>
 
-        <main id="consultation-view" class="flex-1 p-6 md:p-10 flex flex-col page-transition">
-            <header class="flex items-center justify-between pb-6 border-b border-gray-200 mb-6">
-                <a href="index.html" class="text-gray-500 hover:text-gray-700 transition-colors duration-200">
-                    <i class="fas fa-arrow-left text-lg"></i>
-                    <span class="ml-2 font-medium">Back to Dashboard</span>
-                </a>
+        <main id="main-content" class="flex-1 p-6 md:p-10 flex flex-col">
+            <header class="pb-6 border-b border-gray-200 mb-6">
+                <h2 class="text-3xl font-bold text-gray-800">Consult a Doctor</h2>
+                <p class="text-sm text-gray-500 mt-1">Book a live video or chat consultation with a specialist.</p>
             </header>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-6">Book a Consultation</h3>
-            <div class="bg-white p-6 rounded-2xl shadow-md">
-                <form id="consultationForm" class="space-y-4">
+
+            <div class="flex-1 overflow-y-auto">
+                <form id="consultation-form" class="space-y-6 bg-gray-50 p-6 rounded-xl shadow-inner">
                     <div>
-                        <label for="consult-name" class="block text-sm font-medium text-gray-700">Your Name <span class="text-red-500">*</span></label>
-                        <input type="text" id="consult-name" name="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2">
+                        <label for="type" class="block text-lg font-medium text-gray-700 mb-2">Consultation Type</label>
+                        <select id="type" name="type" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <option value="video">Video Consultation (Recommended)</option>
+                            <option value="chat">Chat Consultation</option>
+                        </select>
                     </div>
+
                     <div>
-                        <label for="consult-issue" class="block text-sm font-medium text-gray-700">Describe Your Issue <span class="text-red-500">*</span></label>
-                        <textarea id="consult-issue" name="issue" rows="5" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2"></textarea>
+                        <label for="specialist" class="block text-lg font-medium text-gray-700 mb-2">Required Specialist</label>
+                        <select id="specialist" name="specialist" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <option value="general">General Practitioner</option>
+                            <option value="pediatrician">Pediatrician</option>
+                            <option value="dermatologist">Dermatologist</option>
+                            <option value="gynecologist">Gynecologist</option>
+                            <option value="cardiologist">Cardiologist</option>
+                        </select>
                     </div>
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label for="consult-date" class="block text-sm font-medium text-gray-700">Preferred Date</label>
-                            <input type="date" id="consult-date" name="date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2">
+                            <label for="date" class="block text-lg font-medium text-gray-700 mb-2">Preferred Date</label>
+                            <input type="date" id="date" name="date" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                         </div>
                         <div>
-                            <label for="consult-time" class="block text-sm font-medium text-gray-700">Preferred Time</label>
-                            <input type="time" id="consult-time" name="time" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2">
+                            <label for="time" class="block text-lg font-medium text-gray-700 mb-2">Preferred Time</label>
+                            <input type="time" id="time" name="time" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                         </div>
                     </div>
-                    <div class="flex justify-end">
-                        <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+
+                    <div>
+                        <label for="reason" class="block text-lg font-medium text-gray-700 mb-2">Brief reason for consultation / Symptoms</label>
+                        <textarea id="reason" name="reason" rows="4" placeholder="Describe your symptoms or reason for consulting a doctor..." class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+
+                    <div class="pt-4 flex justify-end">
+                        <button type="submit" class="w-auto inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
                             Submit Request
                         </button>
                     </div>
@@ -91,6 +110,11 @@
             </div>
         </main>
     </div>
+
+    <a href="support.html?action=symptom" class="fixed bottom-8 right-8 z-40 bg-green-600 text-white py-3 px-5 rounded-full shadow-2xl hover:bg-green-700 transition-all duration-300 transform hover:scale-105 inline-flex items-center space-x-2" title="Enter your symptom">
+        <i class="fas fa-brain text-xl"></i>
+        <span class="font-medium text-base">Enter your symptom</span>
+    </a>
 
     <div id="custom-modal" class="fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-50 hidden flex items-center justify-center">
         <div class="bg-white rounded-xl shadow-lg p-6 m-4 max-w-sm w-full transform transition-all scale-95 opacity-0 duration-300">
@@ -108,5 +132,16 @@
     </div>
 
     <script type="module" src="script.js"></script>
+    <script>
+        // Expose closeModal globally for button in modal
+        function closeModal() {
+            const modal = document.getElementById('custom-modal');
+            modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
+            modal.querySelector('div').classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // Wait for the transition to finish
+        }
+    </script>
 </body>
 </html>
