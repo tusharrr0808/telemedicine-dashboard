@@ -65,13 +65,15 @@ body {
     transform: scale(0.9);
 }
 
+/* UPDATED: Nav item active state for blue background and white text */
 .nav-item.active {
-    background-color: #e2e8f0;
-    color: #1e40af;
+    background-color: #3b82f6; /* bg-blue-500 or bg-blue-600 */
+    color: #ffffff; /* text-white */
 }
 
-.nav-item.active svg {
-    color: #1e40af;
+.nav-item.active svg,
+.nav-item.active i { /* Include i for font-awesome icons */
+    color: #ffffff;
 }
 
 .nav-item.active span {
